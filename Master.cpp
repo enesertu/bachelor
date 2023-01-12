@@ -14,18 +14,46 @@ Master::~Master()
 
 void Master::setNOAMaster(int noamaster)
 {
-    if(noamaster>0)
-        NOAMaster = noamaster;
-    else
-        NOAMaster = 0;
+	string errorMessage = "!!NoA must be greater then 0!!";
+
+	try{
+
+		NOAMaster  = noamaster;
+		if (NOAMaster < 0){
+			throw errorMessage;
+		}
+	}
+
+	catch (string x)
+	{
+
+		cout << x << endl;
+		cout << "NOAMaster is automatically set 0!!!" << endl;
+		NOAMaster = 0;
+
+	}
 }
 
 void Master::setNOPMaster(int nopmaster)
 {
-    if(nopmaster>0)
-        NOPMaster = nopmaster;
-    else
-        NOPMaster = 0;
+	string errorMessage = "!!NoP must be greater then 0!!";
+
+	try{
+
+		NOPMaster  = nopmaster;
+		if (NOAMaster < 0){
+			throw errorMessage;
+		}
+	}
+
+	catch (string x)
+	{
+
+		cout << x << endl;
+		cout << "NOPMaster is automatically set 0!!!" << endl;
+		NOPMaster = 0;
+
+	}
 }
 
 int Master::getNOAMaster() const
@@ -49,4 +77,3 @@ double Master::performance()
 {
     return 12.0 + 6.2 * getNOAMaster() + 14.5 * getNOPMaster();
 }
-
