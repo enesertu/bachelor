@@ -14,18 +14,46 @@ Doctoral::~Doctoral()
 
 void Doctoral::setNOAPhd(int noaphd)
 {
-    if(noaphd>0)
-        NOAPhd = noaphd;
-    else
-        NOAPhd = 0;
+	string errorMessage = "!!NOAPhd must be greater then 0!!";
+
+	try{
+
+		NOAPhd  = noaphd;
+		if (NOAPhd < 0){
+			throw errorMessage;
+		}
+	}
+
+	catch (string x)
+	{
+
+		cout << x << endl;
+		cout << "NOAPhd is automatically set 0!!!" << endl;
+		NOAPhd = 0;
+
+	}
 }
 
 void Doctoral::setNOPPhd(int nopPhd)
 {
-    if(nopPhd>0)
-        NOPPhd = nopPhd;
-    else
-        NOPPhd = 0;
+	string errorMessage = "!!NOPPhd must be greater then 0!!";
+
+	try{
+
+		NOPPhd  = nopPhd;
+		if (NOPPhd < 0){
+			throw errorMessage;
+		}
+	}
+
+	catch (string x)
+	{
+
+		cout << x << endl;
+		cout << "NOPPhd is automatically set 0!!!" << endl;
+		NOPPhd = 0;
+
+	}
 }
 
 int Doctoral::getNOAPhd() const
@@ -49,4 +77,3 @@ double Doctoral::performance()
 {
     return 12.0 + 6.2 * getNOAPhd() + 14.5 * getNOPPhd() + Master::performance();
 }
-
