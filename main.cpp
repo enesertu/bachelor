@@ -2,6 +2,7 @@
 #include <vector>
 #include <map>
 #include <random>
+#include <ctime>
 #include "Bachelor.h"
 #include "Master.h"
 #include "Doctoral.h"
@@ -17,14 +18,12 @@ struct Point {
 typedef map<int, Point> MiP;
 
 Point initPoint() {
-    Point p;
-    random_device rd;
-    mt19937 gen(rd());
-    uniform_real_distribution<> dis(0, 10);
-    p.x = dis(gen);
-    p.y = dis(gen);
-    p.z = dis(gen);
-    return p;
+    Point point;
+    srand(time(NULL)); // seed the random number generator with the current time
+    point.x = (double)rand() / RAND_MAX * 10;
+    point.y = (double)rand() / RAND_MAX * 10;
+    point.z = (double)rand() / RAND_MAX * 10;
+    return point;
 }
 
 void printPoint(const vector<Point>& points) {
